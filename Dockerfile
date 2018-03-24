@@ -7,8 +7,8 @@ FROM     ubuntu:artful
 MAINTAINER Gallyoko "yogallyko@gmail.com"
 
 # Definition des constantes
-ENV login_ssh="zend"
-ENV password_ssh="zend"
+ENV login_ssh="zendserver"
+ENV password_ssh="zendserver"
 
 # Mise a jour des depots
 RUN (apt-get update && apt-get upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
