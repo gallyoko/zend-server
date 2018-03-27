@@ -3,7 +3,7 @@
 # VERSION               0.0.1
 #
 
-FROM     ubuntu:artful
+FROM     ubuntu:trusty
 MAINTAINER Gallyoko "yogallyko@gmail.com"
 
 # Definition des constantes
