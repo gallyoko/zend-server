@@ -1,9 +1,9 @@
-# Zend server 9 / apache 2.4 / PHP 7.1 / SSH sur Ubuntu
+# Zend server 2021.3 / apache 2.4 / PHP 7.4 / SSH sur Ubuntu
 #
 # VERSION               0.0.1
 #
 
-FROM     ubuntu:artful
+FROM     ubuntu:focal
 MAINTAINER Gallyoko "yogallyko@gmail.com"
 
 # Definition des constantes
@@ -14,14 +14,14 @@ ENV password_ssh="zendserver"
 RUN (apt-get update && apt-get upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
  
 # Installation des paquets de base
-RUN apt-get install -y -q wget nano openssh-server
+RUN apt-get install -y -q wget nano openssh-server gnupg gnupg1 gnupg2
 
 # Ajout du depot Zend Server
-RUN echo "deb http://repos.zend.com/zend-server/9.1/deb_apache2.4 server non-free" >> /etc/apt/sources.list
-RUN wget http://repos.zend.com/zend.key -O- |apt-key add -
+RUN echo "deb http://repos.zend.com/zend-server/2021.3/deb_ubuntu20 server non-free" >> /etc/apt/sources.list
+RUN wget http://repos.zend.com/zend.key -O- | apt-key add -
 RUN apt-get update
 # Installation de Zend Server
-RUN apt-get install -y -q zend-server-php-7.1
+RUN apt-get install -y -q zend-server
 
 # Ajout utilisateur "${login_ssh}"
 RUN adduser --quiet --disabled-password --shell /bin/bash --home /home/${login_ssh} --gecos "User" ${login_ssh}
